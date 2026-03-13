@@ -1,6 +1,5 @@
 # WP AI Hub (Client)
 ##### Plugin crafted with AI as test (Idea and fixes by human)
-> works till yet 😄 no errors in logs
 
 Universal AI WordPress plugin — thin client for [Multi-LLM API Gateway](https://github.com/VolkanSah/Multi-LLM-API-Gateway) and any compatible SSE hub.
 
@@ -22,7 +21,7 @@ Yes, "MCP server" makes my hair stand on end too — but what this plugin was ac
 
 They're all correct. What matters: one hub, all your models, LLM fallback chain built-in — WordPress just talks to it via this thin client. Claude down? Gemini answers. Zero code changes. Zero Docker chaos.
 
-Perfect for working locally or public on WordPress, TYPO3, or your own code — without running dozens of containers. Access it via shell/CLI or any SSE client like this plugin.
+Perfect for working locally on WordPress, TYPO3, or your own code — without running dozens of containers. Access it via shell/CLI or any SSE client like this plugin.
 
 ---
 
@@ -61,16 +60,8 @@ The plugin handles: WordPress UI, AJAX, nonce security, output sanitization.
 
 ## Configuration
 
-
-**minimum for privat spaces e.g HF**
-```php
-
-define( 'AIHUB_HUB_URL', 'https://your-hub.hf.space' );
-define( 'AIHUB_HUB_KEY', 'hf_...' );
-```
 **Recommended — wp-config.php:**
 ```php
-
 define( 'AIHUB_HUB_URL', 'https://your-hub.hf.space' );
 define( 'AIHUB_HUB_KEY', 'hf_...' );
 define( 'AIHUB_DEFAULT_PROVIDER', 'anthropic' );
@@ -175,3 +166,5 @@ This project is dual licensed under: Apache-2.0 [LICENSE] + ESOL [ESOL]-1.1 —
 
 ##### Note
 This plugin isn't perfect yet and should be considered a test for AI programming and human interaction. If you like it, I'd love to hear your feedback. I'm not sure yet if I'll use it for WordPress, but I know what's needed on the web :P Here's an AI code boilerplate for AI orchestrated by a wannabe professor :D
+
+> Special thanks to Anthropic's Claude AI — viva la revolution! 🕊️
