@@ -13,9 +13,15 @@ Universal AI WordPress plugin — thin client for [Multi-LLM API Gateway](https:
 
 Almost everyone has a WordPress site — so why not use it properly? Instead of installing dozens of limited AI plugins, just build your own wrapper or use mine, and connect free AI models to work with WordPress and your community.
 
-Yes, "MCP server" makes my hair stand on end too — but what this plugin was actually built for is a private [Multi-LLM API Gateway](https://github.com/VolkanSah/Multi-LLM-API-Gateway): a universal AI wrapper over SSE + Quart with sandboxed tool support and a solid foundation. Call it what you want — MCP hub, SSE hub, universal AI wrapper — it doesn't matter.
+Yes, "MCP server" makes my hair stand on end too — but what this plugin was actually built for is a private [Multi-LLM API Gateway](https://github.com/VolkanSah/Multi-LLM-API-Gateway): a production-grade universal AI wrapper over SSE + Quart with sandboxed tool support, Guardian pattern, and a solid PyFundaments foundation. Pick the description that fits your use case:
 
-Perfect for working locally on WordPress, TYPO3, or your own code — without running dozens of Docker containers. Access it via shell/CLI or any SSE client like this plugin. One hub, all your models, zero bloat.
+- Multi-LLM API Gateway with MCP interface
+- Universal MCP Hub (Sandboxed)
+- Universal AI Wrapper over SSE + Quart
+
+They're all correct. What matters: one hub, all your models, LLM fallback chain built-in — WordPress just talks to it via this thin client. Claude down? Gemini answers. Zero code changes. Zero Docker chaos.
+
+Perfect for working locally or public on WordPress, TYPO3, or your own code — without running dozens of containers. Access it via shell/CLI or any SSE client like this plugin.
 
 ---
 
@@ -33,6 +39,8 @@ assets/
 
 **Drop a `.php` file into `/tools/` → it auto-loads and registers itself. No config needed.**
 
+The plugin is intentionally thin — no provider logic, no API keys for LLMs, no model management. All of that lives in your hub. This plugin just sends requests and renders responses.
+
 ## Supported Hubs
 
 Any SSE server exposing:
@@ -41,10 +49,14 @@ Any SSE server exposing:
 
 Works with: [Multi-LLM API Gateway](https://github.com/VolkanSah/Multi-LLM-API-Gateway), Ollama, LM Studio, HuggingFace Spaces, any OpenAI-compatible server.
 
+The hub handles: provider abstraction, fallback chain, rate limiting, sandboxed tools, model config.
+The plugin handles: WordPress UI, AJAX, nonce security, output sanitization.
+
 ## Installation
 
 1. Upload to `/wp-content/plugins/wp-aihub/`
 2. Activate in WordPress
+3. Set up your hub (see [Multi-LLM API Gateway](https://github.com/VolkanSah/Multi-LLM-API-Gateway))
 
 ## Configuration
 
@@ -56,6 +68,8 @@ define( 'AIHUB_DEFAULT_PROVIDER', 'anthropic' );
 define( 'AIHUB_DEFAULT_MODEL', 'claude-haiku-4-5-20251001' );
 define( 'AIHUB_MAX_TOKENS', 1024 );
 ```
+
+Keys never leave your server — they're only used for the hub connection, never exposed to frontend JS.
 
 **Alternative — Settings → AI Hub**
 For non-developers only. Keys stored in wp_options. Use wp-config.php whenever possible.
@@ -97,7 +111,7 @@ class AiHub_Tool_MyTool extends AiHub_Base_Tool {
 }
 ```
 
-That's it — no registration needed.
+That's it — no registration needed. The bootstrap scans `/tools/*.php` on every load and auto-registers any class implementing `AiHub_Tool_Interface`.
 
 ## Theming
 
@@ -113,17 +127,16 @@ Override CSS custom properties:
 
 ## Security
 
-Every request goes through `AiHub_Security::check()` — both **input** (before sending to hub) and **output** (before returning to WordPress). Patterns cover:
+Every request goes through `AiHub_Security::check()` — both **input** (before sending to hub) and **output** (before returning to WordPress). This is a WordPress-side pre-filter inspired by [PoisonIvory](https://github.com/VolkanSah/PoisonIvory), adapted from Python PCRE to PHP. Your hub runs its own second layer on top.
 
+Patterns cover:
 - SQL injection, XSS, path traversal
 - Command & code injection (`eval`, `exec`, `shell_exec` …)
-- SSRF & cloud metadata endpoints
-- LLM prompt injection (`ignore previous instructions`, jailbreaks …)
+- SSRF & cloud metadata endpoints (AWS, GCP, Azure)
+- LLM prompt injection (`ignore previous instructions`, jailbreaks, DAN …)
 - API key exfiltration attempts
 - Container escape paths (`/proc/self/environ`, `docker.sock`)
 - Crypto seed phrases & private keys
-
-Pattern design inspired by [PoisonIvory](https://github.com/VolkanSah/PoisonIvory) — adapted from Python PCRE to PHP. You can run Ivory as your own second layer on your own SSE-HUB, too.
 
 Security-first means occasional false positives. That's fine — anyone asking a WordPress chat widget about `private key encryption` can open another tab.
 
