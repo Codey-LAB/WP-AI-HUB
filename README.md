@@ -61,8 +61,16 @@ The plugin handles: WordPress UI, AJAX, nonce security, output sanitization.
 
 ## Configuration
 
+
+**minimum for privat spaces e.g HF**
+```php
+
+define( 'AIHUB_HUB_URL', 'https://your-hub.hf.space' );
+define( 'AIHUB_HUB_KEY', 'hf_...' );
+```
 **Recommended — wp-config.php:**
 ```php
+
 define( 'AIHUB_HUB_URL', 'https://your-hub.hf.space' );
 define( 'AIHUB_HUB_KEY', 'hf_...' );
 define( 'AIHUB_DEFAULT_PROVIDER', 'anthropic' );
