@@ -141,5 +141,5 @@ Hub Modes (future):
 This project is dual licensed under : Apache-2.0 [LICENSE] + ESOL[ESOL]-1.1 —
 > by © Volkan Kücükbudak for a more secure internet.
 
-### Note:
-This plugin is not perfekt and must be seen as a test of AI Coding and Human interaktivity. If its usefull, send feedback, if i will use it for wordpress i do not know but i jnow whats needed in web :P here an boilerplate from AI for AI orchestret by a Wannabe Professor :D
+##### Note
+This plugin isn't perfect yet and should be considered a test for AI programming and human interaction. If you like it, I'd love to hear your feedback. I'm not sure yet if I'll use it for WordPress, but I know what's needed on the web :P Here's an AI code boilerplate for AI Orchestrat from a wannabe professor :D
