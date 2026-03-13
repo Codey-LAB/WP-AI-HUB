@@ -9,6 +9,16 @@ Universal AI WordPress plugin — thin client for [Multi-LLM API Gateway](https:
 
 ---
 
+## Best Use Case
+
+Almost everyone has a WordPress site — so why not use it properly? Instead of installing dozens of limited AI plugins, just build your own wrapper or use mine, and connect free AI models to work with WordPress and your community.
+
+Yes, "MCP server" makes my hair stand on end too — but what this plugin was actually built for is a private [Multi-LLM API Gateway](https://github.com/VolkanSah/Multi-LLM-API-Gateway): a universal AI wrapper over SSE + Quart with sandboxed tool support and a solid foundation. Call it what you want — MCP hub, SSE hub, universal AI wrapper — it doesn't matter.
+
+Perfect for working locally on WordPress, TYPO3, or your own code — without running dozens of Docker containers. Access it via shell/CLI or any SSE client like this plugin. One hub, all your models, zero bloat.
+
+---
+
 ## Architecture
 
 ```
@@ -138,8 +148,8 @@ Hub Modes (future):
   `[aihub_chat provider="gemini" model="gemini-2.5-flash"]`
 
 ## License
-This project is dual licensed under : Apache-2.0 [LICENSE] + ESOL[ESOL]-1.1 —
-> by © Volkan Kücükbudak for a more secure internet.
+This project is dual licensed under: Apache-2.0 [LICENSE] + ESOL [ESOL]-1.1 —
+> © Volkan Kücükbudak — for a more secure internet.
 
 ##### Note
-This plugin isn't perfect yet and should be considered a test for AI programming and human interaction. If you like it, I'd love to hear your feedback. I'm not sure yet if I'll use it for WordPress, but I know what's needed on the web :P Here's an AI code boilerplate for AI Orchestrat from a wannabe professor :D
+This plugin isn't perfect yet and should be considered a test for AI programming and human interaction. If you like it, I'd love to hear your feedback. I'm not sure yet if I'll use it for WordPress, but I know what's needed on the web :P Here's an AI code boilerplate for AI orchestrated by a wannabe professor :D
