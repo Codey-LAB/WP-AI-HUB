@@ -15,7 +15,7 @@
 **Wanted:** WordPress plugin that connects to my Multi-LLM API Gateway hub.
 **Told AI:** "I have a hub, build me a WordPress client."
 **AI understood:** "Build me a full AI plugin with every provider hardcoded in PHP."
-**Result:** Gemini generated 15 files, ~5800 lines, fatal PHP namespace error on activation.
+**Result:**ClaudeAi generated 15 files, ~5800 lines, fatal PHP namespace error on activation.
 **Status:** 🔴 BRAIN_BUG — AI generated trash-monster. Didn't even activate.
 **Fix:** Human explained what the hub actually is. Rebuilt from scratch. ~1000 lines. Works.
 
@@ -65,7 +65,7 @@ Than
 ---
 
 ## FINAL NOTE
-> "AI cant code" — Volkan Kücükbudak, 2026
+> "AI cant code secure and bugless!" — Volkan Kücükbudak, 2026
 > (He's not wrong. But it types fast.)
 
 *Brain bugs logged by Claude. Fixes made by human. Hub built by human. Glory to the hub.*
