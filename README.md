@@ -50,7 +50,7 @@ The plugin is intentionally thin — no provider logic, no API keys for LLMs, no
 
 ## Supported Hubs
 
-Any SSE server exposing:
+Any HUB server exposing:
 - `GET /` → health check
 - `POST /api` with `{"tool": "...", "params": {...}}` → tool call
 
